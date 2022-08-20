@@ -23,13 +23,10 @@ const Modal = ({ visibleModal, setVisibleModal, createUser, updateInfo, setUpdat
 
     const submit = data => {
         if (updateInfo) {
-            updateUser(data)
-            
-            
+            updateUser(data)  
         } else {
             createUser(data)
         }
-
         setVisibleModal('')
         reset(defaultValue)
         setUpdateInfo()
@@ -39,8 +36,6 @@ const Modal = ({ visibleModal, setVisibleModal, createUser, updateInfo, setUpdat
             setVisibleModal('')
             reset(defaultValue)
             setUpdateInfo()
-
-        
     }
 
     return (
