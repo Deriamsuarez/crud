@@ -11,12 +11,13 @@
 .App {
     /* border: 1px dashed red; */
     max-width: 1440px;
-    min-width: 490px;
+    min-width: 370px;
     margin: auto;
     padding: 0 102px;
     margin-top: 96px;
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden ;
+    transition: 0.5s;
 
 }
 
@@ -174,4 +175,12 @@
         width: 47px;
         transition: 1s;
     }
+}
+
+@media (max-width: 492px) {
+    .App {
+        max-width: 492px;
+        padding: 0 50px;
+        transition: 0.5s;
+}
 }
