@@ -4,7 +4,7 @@ import React from 'react'
 const Card = ({ user, getAllUsers, setUpdateInfo, setVisibleModal }) => {
 
     const deleteCarById = user => {
-        var r = confirm(`Do you want delete the data of thr user with ID#${user.id}?`);
+        var r = confirm(`Do you want to delete the data of the user with ID#${user.id}?`);
         if (r == true) {
             const url = `https://users-crud1.herokuapp.com/users/${user.id}/`
             axios.delete(url)

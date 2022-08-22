@@ -23,7 +23,7 @@ const Modal = ({ visibleModal, setVisibleModal, createUser, updateInfo, setUpdat
 
     const submit = data => {
         if (updateInfo) {
-            var r = confirm(`Do you want update the data ${data.id}?`);
+            var r = confirm(`Do you want to update the data of the user with ID#${data.id}?`);
             if (r == true) {
                 updateUser(data)
             } else {
