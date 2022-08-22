@@ -3,14 +3,18 @@ import React from 'react'
 
 const Card = ({ user, getAllUsers, setUpdateInfo, setVisibleModal }) => {
 
-    const deleteCarById = id => {
-        const url = `https://users-crud1.herokuapp.com/users/${id}/`
-        axios.delete(url)
-            .then(res => {
-                console.log(res.data)
-                getAllUsers()
-            })
-            .catch(err => console.log(err))
+    const deleteCarById = user => {
+        var r = confirm(`Do you want delete the data of thr user with ID#${user.id}?`);
+        if (r == true) {
+            const url = `https://users-crud1.herokuapp.com/users/${user.id}/`
+            axios.delete(url)
+                .then(res => {
+                    console.log(res.data)
+                    getAllUsers()
+                })
+                .catch(err => console.log(err))
+           
+        }
     }
 
     const handleUpdateUser = () => {
@@ -37,7 +41,7 @@ const Card = ({ user, getAllUsers, setUpdateInfo, setVisibleModal }) => {
             <div className="footerCard">
                 <label htmlFor="">ID user: <strong>{user.id}</strong></label>
                 <div className="buttonsContainer">
-                    <button className="btn delete" onClick={() => deleteCarById(user.id)}><i className="fi fi-rr-trash" /></button>
+                    <button className="btn delete" onClick={() => deleteCarById(user)}><i className="fi fi-rr-trash" /></button>
                     <div className="btn edit" onClick={() => handleUpdateUser(user.id)}><i className="fi fi-rr-pencil"></i></div>
 
                 </div>

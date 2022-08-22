@@ -1,5 +1,5 @@
 
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import '../styles/modal.css'
 import { useForm } from 'react-hook-form';
 
@@ -16,16 +16,26 @@ const Modal = ({ visibleModal, setVisibleModal, createUser, updateInfo, setUpdat
     const { register, handleSubmit, reset } = useForm();
 
     useEffect(() => {
-        if(updateInfo){
-          reset(updateInfo)
+        if (updateInfo) {
+            reset(updateInfo)
         }
-      }, [updateInfo])
+    }, [updateInfo])
 
     const submit = data => {
         if (updateInfo) {
-            updateUser(data)  
+            var r = confirm(`Do you want update the data ${data.id}?`);
+            if (r == true) {
+                updateUser(data)
+            } else {
+                handleCloseModal()
+            }
         } else {
-            createUser(data)
+            var r = confirm('Do you want create a new User?');
+            if (r == true) {
+                createUser(data)
+            } else {
+                handleCloseModal()
+            }
         }
         setVisibleModal('')
         reset(defaultValue)
@@ -33,16 +43,16 @@ const Modal = ({ visibleModal, setVisibleModal, createUser, updateInfo, setUpdat
     }
 
     const handleCloseModal = () => {
-            setVisibleModal('')
-            reset(defaultValue)
-            setUpdateInfo()
+        setVisibleModal('')
+        reset(defaultValue)
+        setUpdateInfo()
     }
 
     return (
         <div className={`modal ${visibleModal}`} id="modal1 ">
             <div className="modal-dialog">
                 <header className="modal-header">
-                    { updateInfo ? 'Update User Information' : 'Create New User' }
+                    {updateInfo ? 'Update User Information' : 'Create New User'}
                     <button onClick={handleCloseModal} className="close-modal" aria-label="close modal" data-close>✕</button>
                 </header>
                 <form onSubmit={handleSubmit(submit)}>
@@ -66,7 +76,7 @@ const Modal = ({ visibleModal, setVisibleModal, createUser, updateInfo, setUpdat
                         <label htmlFor='birthday'>Birthday:</label>
                         <input type='date' id='birthday' {...register("birthday")} />
                     </div>
-                    <button>{ updateInfo ? 'Update' : 'Create' }</button>
+                    <button>{updateInfo ? 'Update' : 'Create'}</button>
                 </form>
                 <footer className="modal-footer">
                     Introduce User info
